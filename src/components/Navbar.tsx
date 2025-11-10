@@ -9,7 +9,6 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ theme, setTheme }) => {
   return (
     <nav className="w-full fixed top-0 left-0 z-50 transition-all duration-500">
-      {/* Animated Gradient Background */}
       <div
         className="w-full flex justify-between items-center py-3 px-8 md:px-12
                    backdrop-blur-md border-b border-white/20
@@ -20,7 +19,7 @@ const Navbar: React.FC<NavbarProps> = ({ theme, setTheme }) => {
                    shadow-[0_4px_30px_rgba(0,0,0,0.25)]"
         style={{ fontFamily: '"Calibri", "Segoe UI", sans-serif' }}
       >
-        {/* LEFT SIDE — Profile + Name */}
+        {/* LEFT — Profile & Name */}
         <a href="#hero" className="flex items-center gap-3 group">
           <div className="relative">
             <img
@@ -33,13 +32,12 @@ const Navbar: React.FC<NavbarProps> = ({ theme, setTheme }) => {
             <span className="absolute inset-0 rounded-full blur-md bg-white/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
           </div>
 
-          {/* Name in Calibri */}
           <h1 className="text-2xl font-extrabold text-white tracking-wide drop-shadow-[0_2px_6px_rgba(0,0,0,0.3)]">
             Lohith Babu C
           </h1>
         </a>
 
-        {/* RIGHT SIDE — Navigation */}
+        {/* RIGHT — Navigation */}
         <ul className="flex gap-4 items-center">
           {[
             { name: "Home", href: "#hero" },
@@ -81,7 +79,7 @@ const Navbar: React.FC<NavbarProps> = ({ theme, setTheme }) => {
             </a>
           </li>
 
-          {/* Theme Toggle Button */}
+          {/* Theme Toggle */}
           <li>
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}

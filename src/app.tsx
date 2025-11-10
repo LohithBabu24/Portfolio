@@ -10,14 +10,14 @@ import Footer from "./components/Footer";
 const App: React.FC = () => {
   const [theme, setTheme] = useState("light");
 
-  // Load saved theme
+  // Load saved theme from localStorage
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") || "light";
     setTheme(savedTheme);
     document.documentElement.classList.toggle("dark", savedTheme === "dark");
   }, []);
 
-  // Apply theme
+  // Apply theme dynamically and persist it
   useEffect(() => {
     document.documentElement.classList.toggle("dark", theme === "dark");
     localStorage.setItem("theme", theme);
@@ -26,22 +26,36 @@ const App: React.FC = () => {
   return (
     <div
       className={`font-sans transition-colors duration-700 min-h-screen ${
-        theme === "dark"
-          ? "bg-black text-white"
-          : "bg-white text-gray-900"
+        theme === "dark" ? "bg-black text-white" : "bg-white text-gray-900"
       }`}
     >
+      {/* Navbar */}
       <Navbar theme={theme} setTheme={setTheme} />
 
-      <main className="pt-24 space-y-32">
-        <section id="hero"><Hero /></section>
-        <section id="about"><About /></section>
-        <section id="skills"><Skills /></section>
-        <section id="projects"><Projects /></section>
-        <section id="contact"><Contact /></section>
+      {/* Sections — Contact directly attached to Footer */}
+      <main className="pt-0 space-y-28">
+        <section id="hero">
+          <Hero />
+        </section>
+        <section id="about">
+          <About />
+        </section>
+        <section id="skills">
+          <Skills />
+        </section>
+        <section id="projects">
+          <Projects />
+        </section>
+        {/* 👇 No margin/padding below contact to remove gap before footer */}
+        <section id="contact" className="pb-0 mb-0">
+          <Contact />
+        </section>
       </main>
 
-      <Footer />
+      {/* 👇 Footer now sits flush with contact section */}
+      <div className="mt-0 pt-0">
+        <Footer />
+      </div>
     </div>
   );
 };

@@ -1,136 +1,126 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Github, Linkedin, Mail } from "lucide-react";
 
 const Hero: React.FC = () => {
+  const [clicked, setClicked] = useState(false);
+
+  const handleClick = () => {
+    setClicked(true);
+    setTimeout(() => setClicked(false), 500); // reset after animation
+  };
+
   return (
     <section
       id="hero"
-      className="flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] px-6 text-center
+      onClick={handleClick}
+      className="relative flex flex-col items-center justify-center h-screen 
+                 px-4 text-center overflow-hidden 
                  bg-gradient-to-r from-blue-50 via-indigo-100 to-purple-50 
                  dark:from-gray-900 dark:via-gray-800 dark:to-black
-                 bg-[length:300%_300%] animate-gradientMove transition-all duration-700
-                 pt-20 sm:pt-24"
-      style={{ fontFamily: '"Poppins", "Segoe UI", sans-serif' }}
+                 bg-[length:300%_300%] animate-gradientMove transition-all duration-700"
+      style={{ fontFamily: '"Calibri", "Segoe UI", sans-serif' }} // Apply Calibri
     >
-      {/* Intro Section */}
+      {/* 3D floating background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-blue-400/20 via-purple-400/20 to-pink-400/20 blur-3xl rounded-3xl animate-float-slow"></div>
+
+      {/* Flying overlay effect on click */}
+      <AnimatePresence>
+        {clicked && (
+          <motion.div
+            key="flyEffect"
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 3, opacity: 0.2, rotate: 15 }}
+            exit={{ scale: 0, opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="absolute inset-0 bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 rounded-3xl pointer-events-none"
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Introduction */}
       <motion.div
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: -40 }}
+        whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="mb-8"
+        className="mb-6 relative z-10"
       >
-        <h1 className="text-5xl font-extrabold mb-4 text-gray-800 dark:text-gray-100 drop-shadow-sm">
-          <span className="text-blue-600 dark:text-blue-400">Hi, I’m</span>{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-blue-500 to-pink-500">
-            Lohith Babu C
-          </span>
+        <h1 className="text-5xl sm:text-6xl font-extrabold mb-3 text-transparent bg-clip-text
+                       bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500
+                       drop-shadow-[0_3px_10px_rgba(147,51,234,0.4)]">
+          Hi, I’m Lohith
         </h1>
-        <p className="text-lg opacity-80 max-w-2xl mx-auto text-gray-700 dark:text-gray-300">
+        <p className="text-gray-700 dark:text-gray-300 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed">
           A passionate Full Stack Developer skilled in{" "}
-          <span className="font-semibold text-blue-600 dark:text-blue-400">
-            React
-          </span>
-          ,{" "}
-          <span className="font-semibold text-purple-600 dark:text-purple-400">
-            TypeScript
-          </span>
-          , and{" "}
-          <span className="font-semibold text-green-600 dark:text-green-400">
-            Flask
-          </span>
-          .
+          <span className="font-semibold text-blue-600 dark:text-blue-400">React</span>,{" "}
+          <span className="font-semibold text-purple-600 dark:text-purple-400">TypeScript</span>, and{" "}
+          <span className="font-semibold text-green-600 dark:text-green-400">Flask</span>.
         </p>
       </motion.div>
 
-      {/* Action Buttons */}
+      {/* Buttons */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.4, duration: 0.8 }}
-        className="flex flex-col sm:flex-row gap-4 justify-center mb-8"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3, duration: 0.8 }}
+        className="flex flex-col sm:flex-row gap-4 justify-center mb-6 relative z-10"
       >
-        <a
+        <motion.a
           href="#projects"
-          className="px-8 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 
+          whileHover={{ scale: 1.1, rotate: -2 }}
+          whileTap={{ scale: 0.95 }}
+          className="px-6 py-2.5 bg-gradient-to-r from-blue-500 to-indigo-600
                      text-white font-semibold rounded-lg shadow-lg
-                     hover:shadow-xl hover:scale-105 active:scale-95
-                     transition duration-300"
+                     hover:shadow-xl transition duration-300"
         >
           View My Work
-        </a>
+        </motion.a>
 
-        <a
+        <motion.a
           href="/Lohith Babu C (CV).pdf"
           download
-          className="px-8 py-3 bg-gradient-to-r from-green-500 to-emerald-600 
+          whileHover={{ scale: 1.1, rotate: 2 }}
+          whileTap={{ scale: 0.95 }}
+          className="px-6 py-2.5 bg-gradient-to-r from-green-500 to-emerald-600
                      text-white font-semibold rounded-lg shadow-lg
-                     hover:shadow-xl hover:scale-105 active:scale-95
-                     transition duration-300"
+                     hover:shadow-xl transition duration-300"
         >
           Download Resume
-        </a>
+        </motion.a>
       </motion.div>
 
       {/* Social Icons */}
       <motion.div
-        className="flex gap-8 mt-6"
-        initial="hidden"
-        animate="visible"
-        variants={{
-          hidden: { opacity: 0, y: 40 },
-          visible: {
-            opacity: 1,
-            y: 0,
-            transition: { delayChildren: 0.8, staggerChildren: 0.2 },
-          },
-        }}
+        className="flex gap-8 mt-4 relative z-10"
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.7, delay: 0.5 }}
       >
-        {/* GitHub */}
-        <motion.a
-          variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0 },
-          }}
-          href="https://github.com/your-github-username"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-2 text-gray-700 dark:text-gray-300 
-                     hover:text-black dark:hover:text-white transform hover:scale-110 
-                     hover:drop-shadow-lg transition duration-300"
-        >
-          <Github className="w-7 h-7" />
-        </motion.a>
-
-        {/* LinkedIn */}
-        <motion.a
-          variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0 },
-          }}
-          href="https://www.linkedin.com/in/your-linkedin-profile"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-2 text-gray-700 dark:text-gray-300 
-                     hover:text-blue-600 dark:hover:text-blue-400 transform hover:scale-110 
-                     hover:drop-shadow-lg transition duration-300"
-        >
-          <Linkedin className="w-7 h-7" />
-        </motion.a>
-
-        {/* Email */}
-        <motion.a
-          variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0 },
-          }}
-          href="mailto:lohithbabu2447@gmail.com"
-          className="flex items-center gap-2 text-gray-700 dark:text-gray-300 
-                     hover:text-red-500 dark:hover:text-red-400 transform hover:scale-110 
-                     hover:drop-shadow-lg transition duration-300"
-        >
-          <Mail className="w-7 h-7" />
-        </motion.a>
+        {[{
+          icon: <Github size={28} />,
+          href: "https://github.com/your-github-username",
+          color: "from-gray-700 to-black"
+        },{
+          icon: <Linkedin size={28} />,
+          href: "https://www.linkedin.com/in/your-linkedin-profile",
+          color: "from-blue-500 to-indigo-600"
+        },{
+          icon: <Mail size={28} />,
+          href: "mailto:lohithbabu2447@gmail.com",
+          color: "from-pink-500 to-purple-500"
+        }].map((social, idx) => (
+          <motion.a
+            key={idx}
+            href={social.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.2, rotate: 6 }}
+            className={`p-4 rounded-full bg-gradient-to-br ${social.color} text-white shadow-lg
+                       shadow-${social.color.split(" ")[1]}/50 transition-transform duration-500`}
+          >
+            {social.icon}
+          </motion.a>
+        ))}
       </motion.div>
     </section>
   );
