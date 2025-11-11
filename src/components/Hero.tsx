@@ -52,9 +52,9 @@ const Hero: React.FC = () => {
         </h1>
         <p className="text-gray-700 dark:text-gray-300 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed">
           A passionate Full Stack Developer skilled in{" "}
-          <span className="font-semibold text-blue-600 dark:text-blue-400">React</span>,{" "}
-          <span className="font-semibold text-purple-600 dark:text-purple-400">TypeScript</span>, and{" "}
-          <span className="font-semibold text-green-600 dark:text-green-400">Flask</span>.
+          <span className="font-semibold text-blue-600 dark:text-blue-400">React , TypeScript , Tailwind CSS</span> {" "}
+          <span className="font-semibold text-purple-600 dark:text-purple-400">and</span> {" "}
+          <span className="font-semibold text-green-600 dark:text-green-400">Python , Flask , MongoDB</span>
         </p>
       </motion.div>
 
@@ -98,11 +98,11 @@ const Hero: React.FC = () => {
       >
         {[{
           icon: <Github size={28} />,
-          href: "https://github.com/your-github-username",
+          href: "https://github.com/LohithBabu24",
           color: "from-gray-700 to-black"
         },{
           icon: <Linkedin size={28} />,
-          href: "https://www.linkedin.com/in/your-linkedin-profile",
+          href: "https://www.linkedin.com/in/lohith-babu-c-ba6017274/",
           color: "from-blue-500 to-indigo-600"
         },{
           icon: <Mail size={28} />,

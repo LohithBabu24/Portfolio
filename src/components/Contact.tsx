@@ -66,17 +66,17 @@ const Contact: React.FC = () => {
         {[
           {
             icon: <Github size={28} />,
-            href: "https://github.com/yourusername",
+            href: "https://github.com/LohithBabu24",
             color: "from-gray-700 to-gray-900",
           },
           {
             icon: <Linkedin size={28} />,
-            href: "https://linkedin.com/in/yourusername",
+            href: "https://www.linkedin.com/in/lohith-babu-c-ba6017274/",
             color: "from-blue-500 to-indigo-600",
           },
           {
             icon: <Mail size={28} />,
-            href: "mailto:youremail@example.com",
+            href: "mailto:lohithbabu2447@gmail.com",
             color: "from-pink-500 to-purple-500",
           },
         ].map((social, idx) => (

@@ -32,30 +32,32 @@ const App: React.FC = () => {
       {/* Navbar */}
       <Navbar theme={theme} setTheme={setTheme} />
 
-      {/* Sections — Contact directly attached to Footer */}
-      <main className="pt-0 space-y-28">
+      {/* Sections — removed extra spacing */}
+      <main className="pt-0">
         <section id="hero">
           <Hero />
         </section>
+
         <section id="about">
           <About />
         </section>
+
         <section id="skills">
           <Skills />
         </section>
+
         <section id="projects">
           <Projects />
         </section>
-        {/* 👇 No margin/padding below contact to remove gap before footer */}
+
+        {/* Contact directly attached to footer */}
         <section id="contact" className="pb-0 mb-0">
           <Contact />
         </section>
       </main>
 
-      {/* 👇 Footer now sits flush with contact section */}
-      <div className="mt-0 pt-0">
-        <Footer />
-      </div>
+      {/* Footer sits flush with contact section */}
+      <Footer />
     </div>
   );
 };

@@ -19,7 +19,7 @@ const Navbar: React.FC<NavbarProps> = ({ theme, setTheme }) => {
                    shadow-[0_4px_30px_rgba(0,0,0,0.25)]"
         style={{ fontFamily: '"Calibri", "Segoe UI", sans-serif' }}
       >
-        {/* LEFT — Profile & Name */}
+        {/* LEFT — Profile, Name & Profession */}
         <a href="#hero" className="flex items-center gap-3 group">
           <div className="relative">
             <img
@@ -32,9 +32,15 @@ const Navbar: React.FC<NavbarProps> = ({ theme, setTheme }) => {
             <span className="absolute inset-0 rounded-full blur-md bg-white/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
           </div>
 
-          <h1 className="text-2xl font-extrabold text-white tracking-wide drop-shadow-[0_2px_6px_rgba(0,0,0,0.3)]">
-            Lohith Babu C
-          </h1>
+          {/* Name + Profession */}
+          <div className="flex flex-col leading-tight">
+            <h1 className="text-2xl font-extrabold text-white tracking-wide drop-shadow-[0_2px_6px_rgba(0,0,0,0.3)]">
+              Lohith Babu C
+            </h1>
+            <span className="text-sm text-white/80 font-medium drop-shadow-[0_1px_4px_rgba(0,0,0,0.3)]">
+              Aspiring Software Developer
+            </span>
+          </div>
         </a>
 
         {/* RIGHT — Navigation */}
