@@ -1,22 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Phone } from "lucide-react";
 
 const Contact: React.FC = () => {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert("Thank you for reaching out!");
-    setFormData({ name: "", email: "", message: "" });
-  };
-
   return (
     <div
       className="relative min-h-screen flex flex-col justify-center items-center px-6 py-24 bg-gradient-to-br from-white via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-950 dark:to-black transition-colors duration-700"
