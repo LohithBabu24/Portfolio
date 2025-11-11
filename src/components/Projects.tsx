@@ -27,7 +27,7 @@ const projects: Project[] = [
     title: "Chemical Today — B2B Chemical Industry Platform",
     description:
       "A full-featured website developed for the chemical industry, providing company profiles, market insights, and chemical product listings. Built to help manufacturers and suppliers showcase their products and connect with clients.",
-    technologies: ["React", "Tailwind", "Node.js", "MongoDB", "Rest API"],
+    technologies: ["React", "Tailwind CSS", "TypeScript","Flask", "MongoDB"],
     gitLink: "https://github.com/username/ecommerce-app",
   },
   {
