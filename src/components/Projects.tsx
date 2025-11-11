@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 interface Project {
   title: string;
   description: string;
+  technologies: string[];
   gitLink?: string;
 }
 
@@ -11,14 +12,30 @@ const projects: Project[] = [
   {
     title: "Student Database Management",
     description:
-      "A full-stack CRUD app using React, Tailwind CSS, TypeScript, Flask, and MongoDB.",
+      "This is a full-stack web application that allows users to register, login, and manage student information efficiently. The system enables users to add, view, edit, and delete student records, along with features like filtering students by age or course.This project demonstrates skills in CRUD operations, user authentication, API integration, and frontend-backend connectivity, making it a practical application for managing academic data.",
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Flask", "MongoDB"],
     gitLink: "https://github.com/username/student-db",
   },
   {
     title: "Portfolio Website",
     description:
-      "My own portfolio built with React + TypeScript + Tailwind CSS, hosted on Netlify.",
+      "A personal portfolio showcasing my skills, projects, and certifications. Built with React, TypeScript, and Tailwind CSS, and hosted on Netlify. Designed to be fully responsive and visually engaging, highlighting my full-stack development capabilities.",
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Netlify"],
     gitLink: "https://github.com/username/portfolio",
+  },
+  {
+    title: "Chemical Today — B2B Chemical Industry Platform",
+    description:
+      "A full-featured website developed for the chemical industry, providing company profiles, market insights, and chemical product listings. Built to help manufacturers and suppliers showcase their products and connect with clients.",
+    technologies: ["React", "Tailwind", "Node.js", "MongoDB", "Rest API"],
+    gitLink: "https://github.com/username/ecommerce-app",
+  },
+  {
+    title: " Real Time Tracking and SOS System using IOT",
+    description:
+      " Thecore objective of the project is Multipurpose GPS Tracking Device that extendsits capabilities to address critical societal needs. Specifically, it serves as a medication reminder system for the elderly, a strategicasset for military operations, and a reliable emergency responsetool for the safety of girl children. And it has multiple features in-built.",
+    technologies: ["Embedded"],
+    gitLink: "https://github.com/username/blog-platform",
   },
 ];
 
@@ -68,6 +85,18 @@ const Projects: React.FC = () => {
               <p className="text-gray-700 dark:text-gray-300 mb-4 text-center">
                 {p.description}
               </p>
+
+              {/* ================= Technologies Badges ================= */}
+              <div className="flex flex-wrap justify-center gap-2">
+                {p.technologies.map((tech) => (
+                  <span
+                    key={tech}
+                    className="bg-blue-100 dark:bg-blue-700 text-blue-800 dark:text-blue-200 text-sm font-medium px-3 py-1 rounded-full"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
             </motion.div>
           ))}
         </div>
